@@ -35,14 +35,6 @@ app.use("/api/admin", adminRoute); // 🔥 ADD THIS
 // Serve uploads
 app.use("/uploads", express.static("uploads"));
 
-// Serve frontend build
-app.use(express.static(path.join(__dirname, '../my-project/dist')));
-
-// Fallback to React app for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../my-project/dist/index.html'));
-});
-
 // Start server
 const PORT = process.env.PORT || 5003;
 app.listen(PORT, () => {
