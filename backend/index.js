@@ -16,7 +16,11 @@ import adminRoute from "./route/admin.route.js"; // 🔥 ADD THIS
 
 const app = express();
 
-app.use(cors());
+// Configure CORS for Netlify frontend
+app.use(cors({
+  origin: 'https://bookstore-2-zry2.onrender.com',
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB
