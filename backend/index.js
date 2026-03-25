@@ -4,6 +4,10 @@ dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import bookRoute from "./route/book.route.js";
 import UserRoute from "./route/user.route.js";
@@ -30,6 +34,14 @@ app.use("/api/admin", adminRoute); // 🔥 ADD THIS
 
 // Serve uploads
 app.use("/uploads", express.static("uploads"));
+
+// Serve frontend build
+app.use(express.static(path.join(__dirname, '../my-project/dist')));
+
+// Fallback to React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../my-project/dist/index.html'));
+});
 
 // Start server
 const PORT = process.env.PORT || 5003;
