@@ -31,7 +31,7 @@ function UploadPaper() {
     formData.append("file", file);
     try {
       setIsSubmitting(true);
-      await axios.post("http://localhost:5003/api/admin/upload-paper", formData, {
+      await axios.post("https://bookstore-2-zry2.onrender.com/api/admin/upload-paper", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${user?.token}`,

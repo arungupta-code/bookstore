@@ -23,7 +23,7 @@ function Saved() {
     // Fetch saved notes
     const fetchSavedBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5003/api/user/saved", {
+        const res = await axios.get("https://bookstore-2-zry2.onrender.com/api/user/saved", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSavedBooks(res.data);
@@ -36,7 +36,7 @@ function Saved() {
     // Fetch saved papers
     const fetchSavedPapers = async () => {
       try {
-        const res = await axios.get("http://localhost:5003/api/user/saved-papers", {
+        const res = await axios.get("https://bookstore-2-zry2.onrender.com/api/user/saved-papers", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSavedPapers(res.data);

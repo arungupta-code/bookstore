@@ -24,7 +24,7 @@ function Login() {
 
     try {
       // Correct API path for your backend
-      const res = await axios.post("http://localhost:5003/api/user/login", userInfo);
+      const res = await axios.post("https://bookstore-2-zry2.onrender.com/api/user/login", userInfo);
 
       if (res.data) {
         toast.success("Login successful!");

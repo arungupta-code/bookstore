@@ -16,7 +16,7 @@ function Paper() {
   useEffect(() => {
     const getPapers = async () => {
       try {
-        const res = await axios.get("http://localhost:5003/api/paper");
+        const res = await axios.get("https://bookstore-2-zry2.onrender.com/api/paper");
         const payload = Array.isArray(res.data)
           ? res.data
           : res.data?.papers || [];

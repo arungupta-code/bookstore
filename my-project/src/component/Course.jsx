@@ -16,7 +16,7 @@ function Course() {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5003/api/book");
+        const res = await axios.get("https://bookstore-2-zry2.onrender.com/api/book");
         const payload = Array.isArray(res.data)
           ? res.data
           : res.data?.books || [];

@@ -36,7 +36,7 @@ function Signup() {
 
     try {
       // Signup API
-      const res = await axios.post('http://localhost:5003/api/user/signup', userInfo);
+      const res = await axios.post('https://bookstore-2-zry2.onrender.com/api/user/signup', userInfo);
 
       if (res.data) {
         toast.success('Signup successful!');

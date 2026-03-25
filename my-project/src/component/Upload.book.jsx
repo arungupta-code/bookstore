@@ -33,7 +33,7 @@ function UploadBook() {
     try {
       setIsSubmitting(true);
       await axios.post(
-        "http://localhost:5003/api/admin/upload-course",
+        "https://bookstore-2-zry2.onrender.com/api/admin/upload-course",
         formData,
         {
           headers: {

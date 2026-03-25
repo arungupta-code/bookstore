@@ -31,7 +31,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
     const checkSaved = async () => {
       if (!token) return; // not logged in
       try {
-        const res = await axios.get(`http://localhost:5003/api/user/${savedEndpoint}`, {
+        const res = await axios.get(`https://bookstore-2-zry2.onrender.com/api/user/${savedEndpoint}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const savedItems = Array.isArray(res.data) ? res.data : [];
@@ -53,7 +53,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
     }
     try {
       await axios.post(
-        `http://localhost:5003/api/user/${saveEndpoint}`,
+        `https://bookstore-2-zry2.onrender.com/api/user/${saveEndpoint}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -73,7 +73,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
     }
     try {
       await axios.post(
-        `http://localhost:5003/api/user/${removeEndpoint}`,
+        `https://bookstore-2-zry2.onrender.com/api/user/${removeEndpoint}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -99,8 +99,8 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
     try {
       setIsDeleting(true);
       const endpoint = isPaper
-        ? `http://localhost:5003/api/paper/${item._id}`
-        : `http://localhost:5003/api/book/${item._id}`;
+        ? `https://bookstore-2-zry2.onrender.com/api/paper/${item._id}`
+        : `https://bookstore-2-zry2.onrender.com/api/book/${item._id}`;
 
       await axios.delete(endpoint, {
         headers: { Authorization: `Bearer ${token}` },
@@ -142,7 +142,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
             {item.pdfUrl && (
   <div
     onClick={() =>
-      window.open(`http://localhost:5003${item.pdfUrl}`, "_blank")
+      window.open(`https://bookstore-2-zry2.onrender.com${item.pdfUrl}`, "_blank")
     }
     className="cursor-pointer px-2 py-1 rounded-full hover:bg-pink-500 hover:text-white"
   >
