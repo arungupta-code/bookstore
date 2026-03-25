@@ -16,11 +16,26 @@ import adminRoute from "./route/admin.route.js"; // 🔥 ADD THIS
 
 const app = express();
 
-// Configure CORS for Netlify frontend
-app.use(cors({
-  origin: 'https://melodic-taiyaki-c673aa.netlify.app',
+// Configure CORS for Netlify frontend (including preview deploys)
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'https://melodic-taiyaki-c673aa.netlify.app',
+      /.*\.melodic-taiyaki-c673aa\.netlify\.app$/ // Allow all Netlify preview URLs
+    ];
+    
+    if (!origin || allowedOrigins.some(allowed => 
+      typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+    )) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed'));
+    }
+  },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Connect to MongoDB
