@@ -18,7 +18,7 @@ const app = express();
 
 // Configure CORS for Netlify frontend
 app.use(cors({
-  origin: 'https://bookstore-2-zry2.onrender.com',
+  origin: 'https://melodic-taiyaki-c673aa.netlify.app',
   credentials: true
 }));
 app.use(express.json());
