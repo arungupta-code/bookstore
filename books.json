@@ -1,0 +1,33 @@
+[{
+  "title": "Operating System Notes",
+  "description": "Complete OS handwritten notes",
+  "category": "Computer Science",
+  "pdfUrl": "/uploads/notes/oops.pdf",
+ "image":"https://images.unsplash.com/photo-1512820790803-83ca734da794",
+
+  "uploadedAt": {
+    "$date": "2026-03-18T10:00:00Z"
+  }
+},
+{
+  "title": "Operating System Notes",
+  "description": "Complete OS handwritten notes",
+  "category": "Computer Science",
+  "pdfUrl": "/uploads/notes/OS_Full_Notes.pdf",
+  "image":"https://images.unsplash.com/photo-1512820790803-83ca734da794"
+,
+  "uploadedAt": {
+    "$date": "2026-03-18T10:00:00Z"
+  }
+},
+{
+  "title": "Operating System Notes",
+  "description": "Complete OS handwritten notes",
+  "category": "Computer Science",
+  "pdfUrl": "/uploads/notes/software engg.pdf",
+  "image":"https://images.unsplash.com/photo-1512820790803-83ca734da794"
+,
+  "uploadedAt": {
+    "$date": "2026-03-18T10:00:00Z"
+  }
+}]

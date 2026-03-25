@@ -1,66 +1,46 @@
-import React from 'react'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import list from "../../public/list.json";
-import Cards from './Cards';
-function Freebook() {
-    const filterData = list.filter((data) => data.category === "free");
-    var settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-    return (<>
-        <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
-            <div>
-                <h1 className='font-bold text-xl pb-2'>FREE offered COURCE</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi harum error voluptate qui aperiam rem odit, amet quod in cum omnis sapiente tenetur nam ab reprehenderit
-                </p>
+import React from "react";
+import { Link } from "react-router-dom";
+import { mcqSubjects } from "../data/mcqData";
 
+function Freebook({ searchQuery = "" }) {
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const subjects = mcqSubjects.filter((subject) =>
+    subject.title.toLowerCase().includes(normalizedQuery)
+  );
+
+  return (
+    <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 mt-10">
+      <div>
+        <h1 className="font-bold text-xl pb-2">Practice MCQ Questions</h1>
+        <p className="text-slate-600 dark:text-slate-300">
+          Practice timed MCQ quizzes and check your score with answer key.
+        </p>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {subjects.map((subject) => (
+          <div
+            key={subject.subjectId}
+            className="card bg-base-100 shadow-sm hover:scale-105 duration-200 dark:bg-slate-900 dark:text-white dark:border-2 dark:border-white"
+          >
+            <img src={subject.image} alt={subject.title} />
+            <div className="card-body">
+              <h2 className="card-title">{subject.title}</h2>
+              <p>{subject.description}</p>
+              <div className="card-actions justify-end mt-2">
+                <Link
+                  to={`/mcq/${subject.subjectId}`}
+                  className="cursor-pointer px-4 py-2 rounded-full bg-pink-500 text-white hover:bg-pink-700"
+                >
+                  Practice
+                </Link>
+              </div>
             </div>
-            <div>
-                <Slider {...settings}>
-                    {filterData.map((item) => (
-  <Cards key={item.id} item={item} />
-))}
-
-                </Slider>
-
-
-            </div>
-        </div>
-    </>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Freebook
+export default Freebook;

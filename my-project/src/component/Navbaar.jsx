@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Login from './Login';
+import Logout from './Logout';
+import { useAuth } from '../context/Authprovider';
 
-const Navbaar = () => {
+const Navbaar = ({ showSearch = false, searchValue = "", onSearchChange = () => {} }) => {
+  const [authUser,setAuthUser]=useAuth();
   const [theme,setTheme]=useState(
     localStorage.getItem("theme")?localStorage.getItem("theme"):"light"
   );
@@ -36,9 +39,9 @@ const Navbaar = () => {
     },[]);
     const newitems=(<>
          <li><a href='/'>HOME</a></li>
-        <li><a >CONTACTS</a></li>
+        <li><a href='/paper'>PAPER</a></li>
        <li><a href='/course'>COURSE</a></li>
-        <li><a>ABOUT</a></li></>)
+        <li><a href='/saved'>Saved</a></li></>)
     
   return (
    <>
@@ -67,6 +70,7 @@ const Navbaar = () => {
       {newitems}
     </ul>
   </div>
+  {showSearch && (
   <div className='hidden md:block  px-3 p4-2'>
   <label className=" flex items-centre gap-2">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -81,11 +85,18 @@ const Navbaar = () => {
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input type="text" className="grow outline-none" placeholder="Search" />
+  <input
+    type="text"
+    className="grow outline-none"
+    placeholder="Search MCQ by name"
+    value={searchValue}
+    onChange={(e) => onSearchChange(e.target.value)}
+  />
   
 </label>
 
 </div>
+)}
 <div className='gap 2px px-3 py-2 '>
     <label className="swap swap-rotate">
   {/* this hidden checkbox controls the state */}
@@ -112,11 +123,15 @@ const Navbaar = () => {
   </svg>
 </label>
 </div>
-  <div>
+{
+  authUser?<Logout/>:
+   <div>
     <a className="bg-black text-white p-2 rounded-md hover:bg-slate-800 duration-300 px-3 py-2" 
     onClick={()=>document.getElementById("my_modal_3").showModal()}>login</a>
     <Login/>
   </div>
+}
+ 
   
 </div>
 </div>

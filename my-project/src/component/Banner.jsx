@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import banner from "../../public/banner.jpg"
 
-const Banner = () => {
+const Banner = ({ onAskAi = () => {} }) => {
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  const submitQuestion = async () => {
+    const trimmed = question.trim();
+    if (!trimmed) return;
+
+    try {
+      setIsLoading(true);
+      const aiAnswer = await onAskAi(trimmed);
+      setAnswer(aiAnswer || "No answer returned.");
+      setShowAnswer(true);
+    } catch (error) {
+      setAnswer("Unable to get AI answer right now.");
+      setShowAnswer(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row items-center py-10'>
       
@@ -14,17 +36,47 @@ const Banner = () => {
           </h1>
 
           <p className='text-xl'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           ANY PROBLEM ASK AI
           </p>
 
           <label className="input w-full flex items-center gap-2">
-            <svg className="size-5 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-            </svg>
-            <input type="text" className="grow" placeholder="email" />
+           <input
+  type="text"
+  className="grow bg-white dark:bg-slate-700 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-300"
+  placeholder="Ask AI anything..."
+  value={question}
+  onChange={(e) => setQuestion(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      submitQuestion();
+    }
+  }}
+/>
           </label>
 
-          <button className="btn btn-secondary">Secondary</button>
+          <button className="btn btn-secondary" onClick={submitQuestion} disabled={isLoading}>
+            {isLoading ? "Thinking..." : "Enter"}
+          </button>
+
+          {showAnswer && answer && (
+           <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 p-4">
+  <div className="flex items-start justify-between gap-3 mb-1">
+    <p className="text-sm font-semibold text-pink-500">AI Answer</p>
+    <button
+      type="button"
+      onClick={() => setShowAnswer(false)}
+      className="text-xs px-2 py-1 rounded-md border border-slate-300 dark:border-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 text-gray-700 dark:text-gray-200"
+    >
+      Close
+    </button>
+  </div>
+
+  <p className="text-sm leading-6 text-gray-800 dark:text-gray-200">
+    {answer}
+  </p>
+</div>
+          )}
         </div>
       </div>
 

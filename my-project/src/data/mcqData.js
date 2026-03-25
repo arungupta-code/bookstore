@@ -1,0 +1,152 @@
+const mcqSubjectsRaw = [
+  {
+    subjectId: "operating-system",
+    title: "Operating System MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Process, scheduling, memory and file systems.",
+    questions: [
+      { id: 1, question: "Which scheduling algorithm uses time slices?", options: ["FCFS", "SJF", "Round Robin", "Priority"], answer: "Round Robin" },
+      { id: 2, question: "Virtual memory primarily uses:", options: ["Paging", "Compiling", "Hashing", "Encryption"], answer: "Paging" },
+      { id: 3, question: "A deadlock requires how many Coffman conditions?", options: ["2", "3", "4", "5"], answer: "4" },
+      { id: 4, question: "Which memory is fastest?", options: ["RAM", "ROM", "Cache", "Disk"], answer: "Cache" },
+      { id: 5, question: "The kernel is:", options: ["Hardware", "Core of OS", "App software", "Driver only"], answer: "Core of OS" },
+    ],
+  },
+  {
+    subjectId: "dbms",
+    title: "DBMS MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "SQL, normalization, transactions and indexing.",
+    questions: [
+      { id: 1, question: "SQL stands for:", options: ["Structured Query Language", "Simple Query Language", "System Query Logic", "Sequential Query Language"], answer: "Structured Query Language" },
+      { id: 2, question: "A primary key can be:", options: ["Duplicate", "Null", "Unique and not null", "Only text"], answer: "Unique and not null" },
+      { id: 3, question: "3NF is related to:", options: ["Networking", "Normalization", "Compilation", "Encryption"], answer: "Normalization" },
+      { id: 4, question: "ACID property T stands for:", options: ["Testing", "Transaction", "Time", "Tracking"], answer: "Transaction" },
+      { id: 5, question: "Index is used to:", options: ["Slow down query", "Speed up data retrieval", "Delete rows", "Backup data"], answer: "Speed up data retrieval" },
+    ],
+  },
+  {
+    subjectId: "data-structure",
+    title: "Data Structure MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Arrays, stacks, queues, trees and graphs.",
+    questions: [
+      { id: 1, question: "LIFO is used by:", options: ["Queue", "Stack", "Tree", "Graph"], answer: "Stack" },
+      { id: 2, question: "FIFO is used by:", options: ["Queue", "Stack", "Heap", "Hash"], answer: "Queue" },
+      { id: 3, question: "Binary tree max children per node:", options: ["1", "2", "3", "4"], answer: "2" },
+      { id: 4, question: "Best structure for key-value:", options: ["Array", "Hash table", "Queue", "Stack"], answer: "Hash table" },
+      { id: 5, question: "DFS uses:", options: ["Queue", "Stack", "Array only", "Heap"], answer: "Stack" },
+    ],
+  },
+  {
+    subjectId: "algorithm",
+    title: "Algorithm MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Sorting, searching and complexity analysis.",
+    questions: [
+      { id: 1, question: "Binary search complexity:", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], answer: "O(log n)" },
+      { id: 2, question: "Merge sort complexity:", options: ["O(n^2)", "O(log n)", "O(n log n)", "O(n)"], answer: "O(n log n)" },
+      { id: 3, question: "Bubble sort worst case:", options: ["O(n)", "O(log n)", "O(n log n)", "O(n^2)"], answer: "O(n^2)" },
+      { id: 4, question: "Dijkstra solves:", options: ["MST", "Shortest path", "Topological sort", "String match"], answer: "Shortest path" },
+      { id: 5, question: "Big-O represents:", options: ["Best case", "Worst-case upper bound", "Average only", "Memory only"], answer: "Worst-case upper bound" },
+    ],
+  },
+  {
+    subjectId: "software-design",
+    title: "Software Design MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Design principles and architecture basics.",
+    questions: [
+      { id: 1, question: "SOLID is related to:", options: ["Database", "Design principles", "Networks", "Compilers"], answer: "Design principles" },
+      { id: 2, question: "Singleton pattern ensures:", options: ["Many instances", "One instance", "No class", "Multiple inheritance"], answer: "One instance" },
+      { id: 3, question: "MVC stands for:", options: ["Model View Controller", "Main View Class", "Model Value Core", "Memory View Controller"], answer: "Model View Controller" },
+      { id: 4, question: "High cohesion is:", options: ["Good", "Bad", "Neutral", "Deprecated"], answer: "Good" },
+      { id: 5, question: "Low coupling means:", options: ["Strong dependency", "Less dependency", "No code", "No modules"], answer: "Less dependency" },
+    ],
+  },
+  {
+    subjectId: "compiler",
+    title: "Compiler MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Lexical analysis, parsing and code generation.",
+    questions: [
+      { id: 1, question: "Scanner performs:", options: ["Parsing", "Lexical analysis", "Code generation", "Linking"], answer: "Lexical analysis" },
+      { id: 2, question: "Parser checks:", options: ["Syntax", "Hardware", "Network", "UI"], answer: "Syntax" },
+      { id: 3, question: "Intermediate code is used for:", options: ["Portability", "Coloring", "Debug only", "None"], answer: "Portability" },
+      { id: 4, question: "Token is generated by:", options: ["Parser", "Lexer", "Optimizer", "Loader"], answer: "Lexer" },
+      { id: 5, question: "Code optimization aims to:", options: ["Increase size", "Improve performance", "Delete all comments", "Reduce readability"], answer: "Improve performance" },
+    ],
+  },
+  {
+    subjectId: "computer-architecture",
+    title: "Computer Architecture MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "CPU, memory hierarchy and instruction cycle.",
+    questions: [
+      { id: 1, question: "ALU stands for:", options: ["Arithmetic Logic Unit", "Array Logic Unit", "Advanced Link Unit", "Algorithmic Unit"], answer: "Arithmetic Logic Unit" },
+      { id: 2, question: "Register memory is:", options: ["Slowest", "Fastest", "External", "Virtual"], answer: "Fastest" },
+      { id: 3, question: "Cache sits between:", options: ["CPU and RAM", "RAM and Disk", "CPU and Disk", "GPU and CPU"], answer: "CPU and RAM" },
+      { id: 4, question: "Instruction cycle includes:", options: ["Fetch-Decode-Execute", "Load-Save-Delete", "Open-Run-Close", "Compile-Link-Run"], answer: "Fetch-Decode-Execute" },
+      { id: 5, question: "RISC generally has:", options: ["Complex instructions", "Simple instructions", "No registers", "No pipeline"], answer: "Simple instructions" },
+    ],
+  },
+  {
+    subjectId: "computer-networks",
+    title: "Computer Networks MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "OSI model, routing and network protocols.",
+    questions: [
+      { id: 1, question: "HTTP works on layer:", options: ["Transport", "Application", "Network", "Data Link"], answer: "Application" },
+      { id: 2, question: "IP belongs to:", options: ["Application", "Transport", "Network", "Session"], answer: "Network" },
+      { id: 3, question: "TCP is:", options: ["Connectionless", "Connection-oriented", "Physical protocol", "Routing protocol"], answer: "Connection-oriented" },
+      { id: 4, question: "Port 443 is used by:", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: "HTTPS" },
+      { id: 5, question: "DNS resolves:", options: ["MAC to IP", "Domain to IP", "IP to Port", "URL to Email"], answer: "Domain to IP" },
+    ],
+  },
+  {
+    subjectId: "oops",
+    title: "OOPS MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Classes, objects, inheritance and polymorphism.",
+    questions: [
+      { id: 1, question: "Encapsulation means:", options: ["Data hiding", "Data duplication", "No classes", "Only functions"], answer: "Data hiding" },
+      { id: 2, question: "Polymorphism means:", options: ["One form", "Many forms", "No form", "Static only"], answer: "Many forms" },
+      { id: 3, question: "Inheritance is used for:", options: ["Code reuse", "Memory leak", "UI design", "Networking"], answer: "Code reuse" },
+      { id: 4, question: "Abstraction focuses on:", options: ["Implementation details", "Essential features", "Only variables", "Compilation"], answer: "Essential features" },
+      { id: 5, question: "Object is instance of:", options: ["Method", "Class", "Interface", "Package"], answer: "Class" },
+    ],
+  },
+  {
+    subjectId: "c-programming",
+    title: "C Programming MCQ",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+    description: "Syntax, pointers, arrays and functions in C.",
+    questions: [
+      { id: 1, question: "C is a:", options: ["High-level only", "Low-level only", "Middle-level language", "Markup language"], answer: "Middle-level language" },
+      { id: 2, question: "Which symbol is used for pointers?", options: ["#", "&", "*", "%"], answer: "*" },
+      { id: 3, question: "Entry point of C program:", options: ["start()", "main()", "run()", "init()"], answer: "main()" },
+      { id: 4, question: "Header for printf:", options: ["stdlib.h", "string.h", "stdio.h", "math.h"], answer: "stdio.h" },
+      { id: 5, question: "Array index starts from:", options: ["0", "1", "-1", "Depends"], answer: "0" },
+    ],
+  },
+];
+
+const createExtraQuestions = (subjectTitle, startId = 6, count = 15) => {
+  return Array.from({ length: count }, (_, index) => {
+    const id = startId + index;
+    return {
+      id,
+      question: `${subjectTitle}: Practice question ${id}`,
+      options: ["Option A", "Option B", "Option C", "Option D"],
+      answer: "Option A",
+    };
+  });
+};
+
+export const mcqSubjects = mcqSubjectsRaw.map((subject) => ({
+  ...subject,
+  questions: [...subject.questions, ...createExtraQuestions(subject.title)].slice(0, 20),
+}));
+
+export const getMcqSubjectById = (subjectId) =>
+  mcqSubjects.find((subject) => subject.subjectId === subjectId) || null;
