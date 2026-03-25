@@ -7,3 +7,9 @@
   from = "/api/*"
   to = "https://bookstore-2-zry2.onrender.com/api/:splat"
   status = 200
+
+# SPA fallback - redirect all routes to index.html for React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
