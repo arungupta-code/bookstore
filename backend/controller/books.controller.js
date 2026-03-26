@@ -19,9 +19,8 @@ export const downloadBook = async (req, res) => {
     book.lastDownloadedAt = new Date();
     await book.save();
 
-    const filePath = path.join(process.cwd(), book.pdfUrl); // 🔥 FIX
-
-    res.download(filePath);
+    // Redirect to Cloudinary URL
+    res.redirect(book.pdfUrl);
   } catch (err) {
     res.status(500).json({ message: "Error downloading book" });
   }
