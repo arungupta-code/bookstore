@@ -24,9 +24,8 @@ export const downloadPaper = async (req, res) => {
     paper.lastDownloadedAt = new Date();
     await paper.save();
 
-    const filePath = path.join(process.cwd(), paper.pdfUrl); // 🔥 FIX
-
-    res.download(filePath);
+    // Redirect to Cloudinary URL
+    res.redirect(paper.pdfUrl);
   } catch (err) {
     console.error("Error downloading paper:", err);
     res.status(500).json({ message: "Error downloading paper" });

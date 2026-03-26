@@ -45,8 +45,7 @@ app.use("/api/user", UserRoute);
 app.use("/api/paper", paperRoute);
 app.use("/api/admin", adminRoute); // 🔥 ADD THIS
 
-// Serve uploads
-app.use("/uploads", express.static("uploads"));
+// No local static serve, using Cloudinary
 
 // Start server
 const PORT = process.env.PORT || 5003;

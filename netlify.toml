@@ -8,11 +8,6 @@
   to = "https://bookstore-2-zry2.onrender.com/api/:splat"
   status = 200
 
-[[redirects]]
-  from = "/uploads/*"
-  to = "https://bookstore-2-zry2.onrender.com/uploads/:splat"
-  status = 200
-
 # SPA fallback - redirect all routes to index.html for React Router
 [[redirects]]
   from = "/*"

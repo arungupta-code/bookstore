@@ -194,7 +194,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
             </button>
           </div>
           <embed
-            src={`https://bookstore-2-zry2.onrender.com${item.pdfUrl}`}
+            src={item.pdfUrl}
             type="application/pdf"
             width="100%"
             height="600px"

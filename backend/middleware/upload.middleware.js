@@ -1,23 +1,28 @@
 import multer from "multer";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import path from "path";
-import fs from "fs";
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Ensure upload folders always exist to avoid ENOENT runtime failures
-    let destinationPath = "uploads/";
-    if (req.originalUrl.includes("upload-course")) {
-      destinationPath = "uploads/notes/";
-    } else if (req.originalUrl.includes("upload-paper")) {
-      destinationPath = "uploads/papers/";
-    }
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-    fs.mkdirSync(destinationPath, { recursive: true });
-    cb(null, destinationPath);
-  },
-
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: (req, file) => {
+      if (req.originalUrl.includes("upload-course")) {
+        return "notes";
+      } else if (req.originalUrl.includes("upload-paper")) {
+        return "papers";
+      }
+      return "uploads";
+    },
+    public_id: (req, file) => Date.now() + path.extname(file.originalname),
+    resource_type: "raw", // For PDFs
   },
 });
 
