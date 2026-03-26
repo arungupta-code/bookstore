@@ -13,7 +13,7 @@ export const uploadPaper = async (req, res) => {
       return res.status(400).json({ message: "File not uploaded" });
     }
 
-    const pdfUrl = req.file.path; // Cloudinary URL
+    const pdfUrl = req.file.path.replace("/raw/upload/", "/image/upload/"); // Cloudinary URL
 
     const paper = new Paper({
       title,
@@ -48,7 +48,7 @@ export const uploadCourse = async (req, res) => {
       return res.status(400).json({ message: "File not uploaded" });
     }
 
-    const pdfUrl = req.file.path; // Cloudinary URL
+   const pdfUrl = req.file.path.replace("/raw/upload/", "/image/upload/"); // Cloudinary URL
 
     const course = new Course({
       title,
