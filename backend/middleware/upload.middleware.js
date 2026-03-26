@@ -22,7 +22,7 @@ const storage = new CloudinaryStorage({
       return "uploads";
     },
     public_id: (req, file) => Date.now() + path.extname(file.originalname),
-    resource_type: "raw", // For PDFs
+    resource_type: "auto", // For PDFs
   },
 });
 
