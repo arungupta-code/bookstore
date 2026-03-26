@@ -73,8 +73,8 @@ export const uploadCourse = async (req, res) => {
 // ---------------------- MIGRATION: Find all stale upload paths ----------------------
 export const findStaleUploads = async (req, res) => {
   try {
-    const stalePapers = await Paper.find({ pdfUrl: /^\\/uploads/ });
-    const staleCourses = await Course.find({ pdfUrl: /^\\/uploads/ });
+    const stalePapers = await Paper.find({ pdfUrl: /^\/uploads/ });
+    const staleCourses = await Course.find({ pdfUrl: /^\/uploads/ });
 
     res.status(200).json({
       message: "Stale upload paths found",
@@ -92,8 +92,8 @@ export const findStaleUploads = async (req, res) => {
 // ---------------------- MIGRATION: Remove all stale records ----------------------
 export const removeStaleUploads = async (req, res) => {
   try {
-    const paperResult = await Paper.deleteMany({ pdfUrl: /^\\/uploads/ });
-    const courseResult = await Course.deleteMany({ pdfUrl: /^\\/uploads/ });
+    const paperResult = await Paper.deleteMany({ pdfUrl: /^\/uploads/ });
+    const courseResult = await Course.deleteMany({ pdfUrl: /^\/uploads/ });
 
     res.status(200).json({
       message: "Stale records removed",
