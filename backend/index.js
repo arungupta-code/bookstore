@@ -46,10 +46,7 @@ app.use("/api/paper", paperRoute);
 app.use("/api/admin", adminRoute); // 🔥 ADD THIS
 
 // Serve uploads
-app.use("/uploads", (req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;");
-  next();
-}, express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 
 // Start server
 const PORT = process.env.PORT || 5003;

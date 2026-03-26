@@ -9,6 +9,7 @@ const DEFAULT_CARD_IMAGE =
 function Cards({ item, isSavedPage = false, isPaper = false }) {
   const [isSaved, setIsSaved] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   // Safely read token even if localStorage value is malformed
   let token = null;
@@ -141,9 +142,7 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
             {/* Preview Button */}
             {item.pdfUrl && (
   <div
-    onClick={() =>
-      window.open(`https://bookstore-2-zry2.onrender.com${item.pdfUrl}`, "_blank")
-    }
+    onClick={() => setShowPreview(true)}
     className="cursor-pointer px-2 py-1 rounded-full hover:bg-pink-500 hover:text-white"
   >
     Preview
@@ -180,6 +179,29 @@ function Cards({ item, isSavedPage = false, isPaper = false }) {
         </div>
       </div>
     </div>
+
+    {/* Preview Modal */}
+    {showPreview && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white dark:bg-slate-800 p-4 rounded-lg max-w-4xl w-full max-h-full overflow-auto">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-bold">{item.title || item.name}</h3>
+            <button
+              onClick={() => setShowPreview(false)}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+          </div>
+          <embed
+            src={`https://bookstore-2-zry2.onrender.com${item.pdfUrl}`}
+            type="application/pdf"
+            width="100%"
+            height="600px"
+          />
+        </div>
+      </div>
+    )}
   );
 }
 
